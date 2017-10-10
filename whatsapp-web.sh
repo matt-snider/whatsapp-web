@@ -25,7 +25,7 @@ export -f on_click
 yad --notification                   \
     --listen                         \
     --no-middle	                     \
-    --image="gtk-help"               \
+    --image="whatsapp"               \
     --text="WhatsApp"                \
     --command="bash -c on_click" <&3 &
 

@@ -14,5 +14,7 @@ This project uses:
 
 
 ## Usage
-Make sure the script is on your path. I like to alias it as `whatsapp`.
+* Make sure the script is on your path. I like to alias it as `whatsapp`.
+* Copy icon to /usr/share/icons
 
+  $ sudo xdg-icon-resource install --mode system --size 48 resources/icons/48.png whatsapp-default
