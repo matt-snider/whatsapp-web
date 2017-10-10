@@ -11,6 +11,7 @@ This project uses:
 * chromium-browser - to run WhatsApp web
 * [yad](http://manpages.ubuntu.com/manpages/xenial/man1/yad.1.html) - to create the tray icon
 * Whatsie - icons
+* xdotool - window operations (e.g. switch to WhatsApp when icon is clicked)
 
 
 ## Usage
