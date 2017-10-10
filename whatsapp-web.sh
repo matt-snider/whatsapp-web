@@ -2,7 +2,7 @@
 
 # Looks for the active window
 function find_window() {
-    xdotool search --classname  "web.whatsapp.com"
+    xdotool search --classname "web.whatsapp.com"
 }
 export -f find_window;
 
@@ -15,8 +15,15 @@ export -f activate;
 
 
 # Closes window
+# TODO: this is not portable but xdotool windowkill kills
+# all instances of chromium (all have same pid)
 function close() {
-    xdotool windowkill `find_window`;
+    desktop=$(xdotool get_desktop)
+    window=$(find_window)
+    if [[ $window ]]; then
+        xdotool set_desktop_for_window $window $desktop;
+        xdotool windowactivate --sync $window key ctrl+w;
+    fi;
 }
 export -f close;
 
