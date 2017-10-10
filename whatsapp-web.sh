@@ -39,9 +39,9 @@ chromium_pid=$(pgrep -n chromium)
 
 # Wait for chrome to exit
 while [ -e /proc/$chromium_pid ]
-do 
-	echo "whatsapp: chromium ($chromium_pid) is still running" 
+do
+	echo "whatsapp: chromium ($chromium_pid) is still running"
 	sleep 1
 done
 echo "whatsapp: chromium ($chromium_pid) has exited"
-
+on_exit
