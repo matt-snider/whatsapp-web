@@ -14,6 +14,13 @@ function activate() {
 export -f activate;
 
 
+# Closes window
+function close() {
+    xdotool windowkill `find_window`;
+}
+export -f close;
+
+
 # Check if exists, if so, activate and exit
 if [[ $(find_window) ]]; then
     activate
@@ -32,6 +39,7 @@ exec 3<> $PIPE
 function on_exit() {
     echo "quit" >&3
     rm -f $PIPE
+    close
 }
 trap on_exit EXIT
 
@@ -41,6 +49,7 @@ function on_click() {
     activate;
 }
 export -f on_click
+
 
 # Create tray icon
 yad --notification                   \
