@@ -1,5 +1,24 @@
 #!/bin/bash
 
+# Looks for the active window
+function find_window() {
+    xdotool search --classname  "web.whatsapp.com"
+}
+
+
+# Switches to WhatsApp window
+function activate() {
+    xdotool windowactivate `find_window`;
+}
+
+
+# Check if exists, if so, activate and exit
+if [[ $(find_window) ]]; then
+    activate
+    exit 0;
+fi
+
+
 # Create a FIFO file to manage the I/O redirection from shell
 # Attach a file descriptor to the file
 PIPE=$(mktemp -u --tmpdir ${0##*/}.XXXXXXXX)
