@@ -4,12 +4,14 @@
 function find_window() {
     xdotool search --classname  "web.whatsapp.com"
 }
+export -f find_window;
 
 
 # Switches to WhatsApp window
 function activate() {
     xdotool windowactivate `find_window`;
 }
+export -f activate;
 
 
 # Check if exists, if so, activate and exit
@@ -25,7 +27,8 @@ PIPE=$(mktemp -u --tmpdir ${0##*/}.XXXXXXXX)
 mkfifo $PIPE
 exec 3<> $PIPE
 
-# Close yad on process shutdown
+
+# Closes yad on process shutdown
 function on_exit() {
     echo "quit" >&3
     rm -f $PIPE
@@ -33,12 +36,11 @@ function on_exit() {
 trap on_exit EXIT
 
 
-# Add click handler for tray icon
+# Handles click on tray icon
 function on_click() {
-    echo "clicked"
+    activate;
 }
 export -f on_click
-
 
 # Create tray icon
 yad --notification                   \
